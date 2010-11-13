@@ -152,8 +152,7 @@ The code is used for error reporting, but it also sets the content type to "text
 This migth reduce the posibility to exploit the security bug.
 
 \subsection{Password Management: Hardcoded Password}
-Fortify reports about three issues, all of them are within the tests that are only used
-by developers to automated tests. We consider them as false positves since OpenXdata don't
+Fortify reports about three issues, all of them are within the tests that are only used by developers to automated tests. We consider them as false positves since OpenXdata don't
 include them for users.
 
 \subsection{Path Manipulation}
@@ -193,7 +192,7 @@ userLocale = new Locale((String)
 \end{lstlisting}
 The class ResetPasswordServlet is a singleton, so the member fields is shared between users.
 The result is that one user could see another user's data.
-Since all beans that is provided here is singletons it would not make a different, but for readability it should be fixed.
+Since all beans that is provided here is singletons it would not make a difference, but for readability it should be fixed.
 
 
 \begin{lstlisting}[caption=DataExportServlet.java:116 ++]
@@ -306,7 +305,7 @@ Findings from Fortify shows log forging vulnerabilities in the followings code:
 
 
 \begin{lstlisting}[caption=DataImportServlet.java:124]
-log.info("msisdn " + msisdn + " is user " + msisdnUser.getName());
+log.info("msisdn " + msisdn + " is user " + ...);
 \end{lstlisting}
 
 \begin{lstlisting}[caption=ImportServlet.java:77]
@@ -314,13 +313,11 @@ log.info("Starting import of type: " + importType);
 \end{lstlisting}
 
 \begin{lstlisting}[caption=ReExportAllFormData.java:88]
-<<<<<<< HEAD
 log.info("Found formBinding ... :"+formBinding);
 \end{lstlisting}
 
 \begin{lstlisting}[caption=ReportManager.java:125]
 log.info("Creating BIRT ... with BIRT_HOME = " + birtHome);
-=======
 log.info("Found formBinding (for exported table 
 name) :"+formBinding);
 \end{lstlisting}
@@ -328,6 +325,13 @@ name) :"+formBinding);
 \begin{lstlisting}[caption=ReportManager.java:125]
 log.info("Creating BIRT engine config with BIRT_HOME = " + 
 birtHome);
->>>>>>> Background color and frame size have been changed.bash: wq: command not found
-\end{lstlisting} 
+\end{lstlisting}
+\newpage
+\section{Attacks Mitigation} 
+\subsection{Path Manipulation}
+\subsection{Race Condition: Singleton Member Field}
+\subsection{SQL Injection}
+\subsection{Header Manipulation}
+\subsection{Insecure Randomness}
+\subsection{Log Forging}
 \end{document}
